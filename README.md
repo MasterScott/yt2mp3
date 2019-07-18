@@ -88,11 +88,11 @@ git clone "https://github.com/DeBos99/yt2mp3.git"
 
 ## Usage
 
-`perl main.pl`
-Or
-`perl main.pl FILE`
-Or (Windows only)
-Drag and drop file with links to [main.bat](main.bat) file.
+| Command                                                     | Description                                  | Windows            | Unix               |
+| :---------------------------------------------------------- | :------------------------------------------- | :----------------: | :----------------: |
+| `perl main.pl`                                              | Run script and read songs from STDIN.        | :heavy_check_mark: | :heavy_check_mark: |
+| `perl main.pl FILE`                                         | Run script and read songs from **FILE**.     | :heavy_check_mark: | :heavy_check_mark: |
+| Drag and drop file with songs to [main.bat](main.bat) file. | Run script and read songs from dropped file. | :heavy_check_mark: | :x:                |
 
 ## Authors
 
