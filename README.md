@@ -44,12 +44,9 @@
 * Install [Git](https://git-scm.com/download/win).
 * Install [Perl](http://strawberryperl.com/).
 * Install [Microsoft Visual C++ 2010 Redistributable Package (x86)](https://www.microsoft.com/en-US/download/confirmation.aspx?id=5555)
-* Run following commands in the command prompt:
+* Run following command in the command prompt:
 ```
 git clone "https://github.com/DeBos99/yt2mp3.git"
-cd yt2mp3
-perl install.pl
-cd ..
 ```
 
 ### Unix

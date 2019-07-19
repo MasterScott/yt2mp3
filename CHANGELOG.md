@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.0] - 2019-07-19
+
+### Changed
+
+- Manual installation to automatic.
+
+### Removed
+
+- [install.pl](install.pl) file.
+
 ## [0.0.4] - 2019-07-18
 
 ### Added
@@ -29,7 +39,7 @@ All notable changes to this project will be documented in this file.
 ### Added
 
 - [CHANGELOG.md](CHANGELOG.md) file.
-- [install.bat](install.bat) file.
+- [install.pl](install.pl) file.
 - [main.bat](main.bat) file.
 - [main.pl](main.pl) file.
 - [README.md](README.md) file.
