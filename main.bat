@@ -1,1 +1,1 @@
-perl main.pl %*
+perl main.pl -s %*

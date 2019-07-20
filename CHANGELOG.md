@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.0] - 2019-07-20
+
+### Added
+
+##### [main.pl](main.pl)
+
+- `$VERSION` variable.
+- Config variables.
+- Argument parser.
+
+##### [README.md](README.md)
+
+- `Documentation` section.
+
 ## [0.1.0] - 2019-07-19
 
 ### Changed
