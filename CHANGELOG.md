@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.1.0] - 2019-07-20
+
+### Added
+
+##### [main.pl](main.pl)
+
+- Default value for `--songs` argument.
+
 ## [1.0.0] - 2019-07-20
 
 ### Added

@@ -1,10 +1,10 @@
 use v5.10;
 use strict;
-no strict 'subs';
+no strict qw(subs refs);
 use warnings;
 use experimental 'smartmatch';
 
-my $VERSION='1.0.0';
+my $VERSION='1.1.0';
 
 if($^Oeq'MSWin32'){
 	my $youtube_dl_not_installed=system('where youtube-dl >NUL 2>NUL');
@@ -54,7 +54,7 @@ if($^Oeq'MSWin32'){
 	}
 }
 
-my $songs_file;
+my $songs_file=STDIN;
 my $audio_format='mp3';
 my $audio_quality='0';
 my $output_template='%(title)s.%(ext)s';
@@ -66,18 +66,14 @@ sub get_arg{
 }
 do{
 	given(shift @ARGV){
+		when(undef){}
 		when(['-v','--version']){
 			print("YT2MP3 v$VERSION\n");
 			exit;
 		}
 		when(['-s','--songs']){
 			my $songs_list=get_arg(1,1);
-			if($songs_list eq'-'){$songs_file=STDIN}
-			elsif(-f $songs_list){
-				open $songs_file,'<',$songs_list or die "Can't open file \"$songs_list\": $!";
-			}else{
-				die "File \"$songs_list\" doesn't exist.\n"
-			}
+			open $songs_file,'<',$songs_list or die "Can't open file \"$songs_list\": $!";
 		}
 		when(['-f','--format']){
 			$audio_format=get_arg(1,1);
@@ -91,9 +87,7 @@ do{
 				die "Invalid audio quality \"$audio_quality\".\nAudio quality has to be number between 0, for best quality, and 9, for worst.\n"
 			}
 		}
-		when(['-o','--output']){
-			$output_template=get_arg(1,1);
-		}
+		when(['-o','--output']){$output_template=get_arg(1,1)}
 		default{
 			print("usage: perl main.pl [-h] [-v] [-s FILE] [-f {best aac flac mp3 m4a opus vorbis wav}] [-q {0-9}] [-o TEMPLATE]\n");
 			print("  -h, --help            show this help message and exit\n");
@@ -102,7 +96,7 @@ do{
 			print("  -f, --format {best aac flac mp3 m4a opus vorbis wav}\n            set custom file format\n");
 			print("  -q, --quality {0-9}\n            set custom audio quality\n");
 			print("  -o, --output TEMPLATE\n            set custom output template\n");
-			if(not $_~~[undef,'-h','--help']){die "Invalid option \"$_\".\n"}
+			if(not $_~~['-h','--help']){die "Invalid option \"$_\".\n"}
 			exit
 		}
 	}

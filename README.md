@@ -34,7 +34,6 @@
     - [MacOS](#homebrew)
 - [Usage](#usage)
 - [Documentation](#documentation)
-  - [Required arguments](#required-arguments)
   - [Optional arguments](#optional-arguments)
 - [Authors](#authors)
 - [Contact](#contact)
@@ -90,18 +89,11 @@ git clone "https://github.com/DeBos99/yt2mp3.git"
 
 | Command                                                     | Description                                  | Windows            | Unix               |
 | :---------------------------------------------------------- | :------------------------------------------- | :----------------: | :----------------: |
-| `perl main.pl -s -`                                         | Run script and read songs from STDIN.        | :heavy_check_mark: | :heavy_check_mark: |
-| `perl main.pl -s FILE`                                      | Run script and read songs from **FILE**.     | :heavy_check_mark: | :heavy_check_mark: |
+| `perl main.pl`                                              | Run script and read songs from STDIN.        | :heavy_check_mark: | :heavy_check_mark: |
+| `perl main.pl FILE`                                         | Run script and read songs from **FILE**.     | :heavy_check_mark: | :heavy_check_mark: |
 | Drag and drop file with songs to [main.bat](main.bat) file. | Run script and read songs from dropped file. | :heavy_check_mark: | :x:                |
 
 ## Documentation
-
-### Required arguments
-
-| Argument                | Description                                       |
-| :---------------------- | :------------------------------------------------ |
-| -s -<br>--songs -       | Reads songs from STDIN.                           |
-| -s FILE<br>--songs FILE | Sets the path to the file with songs to **FILE**. |
 
 ### Optional arguments
 
@@ -109,6 +101,7 @@ git clone "https://github.com/DeBos99/yt2mp3.git"
 | :----------------------------------------------------- | :---------------------------------------------------- | :----------------------------- |
 | -h<br>--help                                           | Shows help message and exits.                         |                                |
 | -v<br>--version                                        | Shows version and exits.                              |                                |
+| -s<br>--songs                                          | Sets path to file with songs.                         | STDIN                          |
 | -f<br>--format {best aac flac mp3 m4a opus vorbis wav} | Sets custom file format.                              | mp3                            |
 | -q<br>--quality {0-9}                                  | Sets custom audio quality.                            | 0                              |
 | -o<br>--output                                         | Sets custom output template.                          | %(title)s.%(ext)s              |
