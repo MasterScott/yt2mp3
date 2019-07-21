@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.1.2] - 2019-07-21
+
+### Added
+
+##### [main.pl](main.pl)
+
+- More colors.
+
+### Removed
+
+##### [main.pl](main.pl)
+
+- Brackets.
+
 ## [1.1.1] - 2019-07-21
 
 ### Fixed

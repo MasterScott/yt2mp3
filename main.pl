@@ -4,7 +4,7 @@ no strict qw(subs refs);
 use warnings;
 use experimental 'smartmatch';
 
-my $VERSION='1.1.1';
+my $VERSION='1.1.2';
 
 if($^Oeq'MSWin32'){
 	my $youtube_dl_not_installed=system('where youtube-dl >NUL 2>NUL');
@@ -36,21 +36,21 @@ if($^Oeq'MSWin32'){
 		}
 		if($ffmpeg_not_installed){
 			use IO::Uncompress::Unzip 'unzip','$UnzipError';
-			print(color('red'));
-			print("[-] FFmpeg is not installed.\n");
-			print(color('reset'));
-			system('./wget',"https://ffmpeg.zeranoe.com/builds/win$arch/static/ffmpeg-latest-win$arch-static.zip");
-			print(color('green'));
-			print("[+] Extracting file from the archive.\n");
-			unzip("ffmpeg-latest-win$arch-static.zip"=>'ffmpeg.exe',Name=>"ffmpeg-latest-win$arch-static/bin/ffmpeg.exe") or die $UnzipError;
-			print("[+] Successfully extracted file from the archive.\n");
-			print("[+] Removing the archive.\n");
+			print color('red');
+			print "[-] FFmpeg is not installed.\n";
+			print color('reset');
+			system './wget',"https://ffmpeg.zeranoe.com/builds/win$arch/static/ffmpeg-latest-win$arch-static.zip";
+			print color('green');
+			print "[+] Extracting file from the archive.\n";
+			unzip "ffmpeg-latest-win$arch-static.zip"=>'ffmpeg.exe',Name=>"ffmpeg-latest-win$arch-static/bin/ffmpeg.exe" or die $UnzipError;
+			print "[+] Successfully extracted file from the archive.\n";
+			print "[+] Removing the archive.\n";
 			unlink "ffmpeg-latest-win$arch-static.zip";
 		}
-		print("[+] Removing wget.exe\n");
+		print "[+] Removing wget.exe\n";
 		unlink 'wget.exe';
-		print("[+] Successfully installed YT2MP3.\n");
-		print(color('reset'));
+		print "[+] Successfully installed YT2MP3.\n";
+		print color('reset');
 	}
 }
 
@@ -89,20 +89,22 @@ do{
 		}
 		when(['-o','--output']){$output_template=get_arg(1,1)}
 		default{
-			print("usage: perl main.pl [-h] [-v] [-s FILE] [-f {best aac flac mp3 m4a opus vorbis wav}] [-q {0-9}] [-o TEMPLATE]\n");
-			print("  -h, --help            show this help message and exit\n");
-			print("  -v, --version            show version and exit\n");
-			print("  -s, --songs FILE\n            set path to file with songs\n");
-			print("  -f, --format {best aac flac mp3 m4a opus vorbis wav}\n            set custom file format\n");
-			print("  -q, --quality {0-9}\n            set custom audio quality\n");
-			print("  -o, --output TEMPLATE\n            set custom output template\n");
-			if(not $_~~['-h','--help']){die "Invalid option \"$_\".\n"}
+			print color('blue');
+			print "usage: perl main.pl [-h] [-v] [-s FILE] [-f {best aac flac mp3 m4a opus vorbis wav}] [-q {0-9}] [-o TEMPLATE]\n";
+			print "  -h, --help            show this help message and exit\n";
+			print "  -v, --version            show version and exit\n";
+			print "  -s, --songs FILE\n            set path to file with songs\n";
+			print "  -f, --format {best aac flac mp3 m4a opus vorbis wav}\n            set custom file format\n";
+			print "  -q, --quality {0-9}\n            set custom audio quality\n";
+			print "  -o, --output TEMPLATE\n            set custom output template\n";
+			if(not $_~~['-h','--help']){die colored("Invalid option \"$_\".\n",'red')}
+			print color('reset');
 			exit
 		}
 	}
 }while(@ARGV);
 
 my @songs;
-while(<$songs_file>){/v=[\w_-]+/ ?push(@songs,"https://www.youtube.com/watch?$&"):last};
-system(($^O=~/^ms/i ?'./':'').'youtube-dl','--geo-bypass','-x','--audio-format',$audio_format,'--audio-quality',$audio_quality,'-o',$output_template,@songs);
-rename($_,$_=~s/^\s+|(\([^\)]*\))|[^ -~]+|\s+$//gr) foreach(glob('*.'.$audio_format));
+while(<$songs_file>){/v=[\w_-]+/ ?push @songs,"https://www.youtube.com/watch?$&":last};
+system(($^O=~/^ms/i ?'./':'').'youtube-dl','--geo-bypass','-x','--audio-format',$audio_format,'--audio-quality',$audio_quality,'-o',$output_template,@songs) and exit $?>>8;
+rename $_,$_=~s/^\s+|(\([^\)]*\))|[^ -~]+|\s+$//gr foreach(glob '*.'.$audio_format);
