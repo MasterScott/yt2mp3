@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.1.1] - 2019-07-21
+
+### Fixed
+
+##### [CHANGELOG.md](CHANGELOG.md)
+
+- Typo.
+
+##### [README.md](README.md)
+
+- Typo.
+
 ## [1.1.0] - 2019-07-20
 
 ### Added
@@ -70,4 +82,4 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
-- [LICENSE.md](LICENSE.md) file.
+- [LICENSE](LICENSE) file.
