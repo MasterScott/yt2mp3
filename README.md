@@ -97,14 +97,14 @@ git clone "https://github.com/DeBos99/yt2mp3.git"
 
 ### Optional arguments
 
-| Argument                                               | Description                                           | Default value                  |
-| :----------------------------------------------------- | :---------------------------------------------------- | :----------------------------- |
-| -h<br>--help                                           | Shows help message and exits.                         |                                |
-| -v<br>--version                                        | Shows version and exits.                              |                                |
-| -s<br>--songs                                          | Sets path to file with songs.                         | STDIN                          |
-| -f<br>--format {best aac flac mp3 m4a opus vorbis wav} | Sets custom file format.                              | mp3                            |
-| -q<br>--quality {0-9}                                  | Sets custom audio quality.                            | 0                              |
-| -o<br>--output                                         | Sets custom output template.                          | %(title)s.%(ext)s              |
+| Argument                                               | Description                   | Default value     |
+| :----------------------------------------------------- | :---------------------------- | :---------------- |
+| -h<br>--help                                           | Shows help message and exits. |                   |
+| -v<br>--version                                        | Shows version and exits.      |                   |
+| -s<br>--songs                                          | Sets path to file with songs. | STDIN             |
+| -f<br>--format {best aac flac mp3 m4a opus vorbis wav} | Sets custom file format.      | mp3               |
+| -q<br>--quality {0-9}                                  | Sets custom audio quality.    | 0                 |
+| -o<br>--output                                         | Sets custom output template.  | %(title)s.%(ext)s |
 
 Output templates can be found here: https://github.com/ytdl-org/youtube-dl/blob/master/README.md#output-template
 

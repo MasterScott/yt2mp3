@@ -4,7 +4,7 @@ no strict qw(subs refs);
 use warnings;
 use experimental 'smartmatch';
 
-my $VERSION='1.1.3';
+my $VERSION='1.1.4';
 
 if($^Oeq'MSWin32'){
 	my $youtube_dl_not_installed=system('where youtube-dl >NUL 2>NUL');

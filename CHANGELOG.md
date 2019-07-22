@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.1.4] - 2019-07-22
+
+### Removed
+
+##### [README.md](README.md)
+
+- Empty space in tables.
+
 ## [1.1.3] - 2019-07-22
 
 ### Added
