@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.1.3] - 2019-07-22
+
+### Added
+
+##### [main.pl](main.pl)
+
+- Error handling.
+- More informations about current state of installation.
+
 ## [1.1.2] - 2019-07-21
 
 ### Added
