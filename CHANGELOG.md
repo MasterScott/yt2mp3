@@ -2,7 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
-## [1.1.4] - 2019-07-22
+## [2.1.5] - 2019-07-23
+
+### Added
+
+- `VERSION` file.
+
+### Changed
+
+##### [CHANGELOG.md](CHANGELOG.md)
+
+- Version.
+
+## [2.1.4] - 2019-07-22
 
 ### Removed
 
@@ -10,7 +22,7 @@ All notable changes to this project will be documented in this file.
 
 - Empty space in tables.
 
-## [1.1.3] - 2019-07-22
+## [2.1.3] - 2019-07-22
 
 ### Added
 
@@ -19,7 +31,7 @@ All notable changes to this project will be documented in this file.
 - Error handling.
 - More informations about current state of installation.
 
-## [1.1.2] - 2019-07-21
+## [2.1.2] - 2019-07-21
 
 ### Added
 
@@ -33,7 +45,7 @@ All notable changes to this project will be documented in this file.
 
 - Brackets.
 
-## [1.1.1] - 2019-07-21
+## [2.1.1] - 2019-07-21
 
 ### Fixed
 
@@ -45,7 +57,7 @@ All notable changes to this project will be documented in this file.
 
 - Typo.
 
-## [1.1.0] - 2019-07-20
+## [2.1.0] - 2019-07-20
 
 ### Added
 
@@ -53,7 +65,7 @@ All notable changes to this project will be documented in this file.
 
 - Default value for `--songs` argument.
 
-## [1.0.0] - 2019-07-20
+## [2.0.0] - 2019-07-20
 
 ### Added
 
@@ -67,7 +79,7 @@ All notable changes to this project will be documented in this file.
 
 - `Documentation` section.
 
-## [0.1.0] - 2019-07-19
+## [1.1.0] - 2019-07-19
 
 ### Changed
 
@@ -77,7 +89,7 @@ All notable changes to this project will be documented in this file.
 
 - [install.pl](install.pl) file.
 
-## [0.0.4] - 2019-07-18
+## [1.0.2] - 2019-07-18
 
 ### Added
 
@@ -91,7 +103,7 @@ All notable changes to this project will be documented in this file.
 
 - While loop.
 
-## [0.0.3] - 2019-07-16
+## [1.0.1] - 2019-07-16
 
 ### Fixed
 
@@ -99,7 +111,7 @@ All notable changes to this project will be documented in this file.
 
 - Regex matching video ID.
 
-## [0.0.2] - 2019-07-15
+## [1.0.0] - 2019-07-15
 
 ### Added
 
@@ -109,7 +121,7 @@ All notable changes to this project will be documented in this file.
 - [main.pl](main.pl) file.
 - [README.md](README.md) file.
 
-## [0.0.1] - 2019-07-15
+## [1.0.0] - 2019-07-15
 
 ### Added
 

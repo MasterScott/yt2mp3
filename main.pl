@@ -3,8 +3,9 @@ use strict;
 no strict qw(subs refs);
 use warnings;
 use experimental 'smartmatch';
+use Term::ANSIColor qw(color colored);
 
-my $VERSION='1.1.4';
+my $VERSION='2.1.5';
 
 if($^Oeq'MSWin32'){
 	my $youtube_dl_not_installed=system('where youtube-dl >NUL 2>NUL');
@@ -13,7 +14,6 @@ if($^Oeq'MSWin32'){
 	if($anything_not_installed){
 		require Win32::Console::ANSI;
 		Win32::Console::ANSI->import();
-		use Term::ANSIColor;
 		print colored "[-] YT2MP3 is not installed.\n",'red';
 		print colored "[+] Starting the installation.\n",'green';
 		print colored "[+] Downloading wget.exe\n",'green';
