@@ -4,14 +4,14 @@ no strict qw(subs refs);
 use warnings;
 use experimental 'smartmatch';
 use Term::ANSIColor qw(color colored);
-if($^Oeq'MSWin32'){
+if($^O eq 'MSWin32'){
 	require Win32::Console::ANSI;
 	Win32::Console::ANSI->import();
 }
 
-my $VERSION='2.1.11';
+my $VERSION='2.1.12';
 
-if($^Oeq'MSWin32'){
+if($^O eq 'MSWin32'){
 	my $youtube_dl_not_installed=system('where youtube-dl >NUL 2>NUL');
 	my $ffmpeg_not_installed=system('where ffmpeg >NUL 2>NUL');
 	my $anything_not_installed=$youtube_dl_not_installed||$ffmpeg_not_installed;
@@ -19,7 +19,7 @@ if($^Oeq'MSWin32'){
 		print colored "[-] YT2MP3 is not installed.\n",'red';
 		print colored "[+] Starting the installation.\n",'green';
 		print colored "[+] Downloading wget.exe\n",'green';
-		my $arch=$ENV{'PROCESSOR_ARCHITECTURE'}eq'x86'?32:64;
+		my $arch=$ENV{'PROCESSOR_ARCHITECTURE'} eq 'x86'?32:64;
 		system 'certutil','-urlcache','-split','-f',"https://eternallybored.org/misc/wget/1.20.3/$arch/wget.exe" and exit $?>>8;
 		print colored "[+] Successfully downloaded wget.exe\n",'green';
 		if($youtube_dl_not_installed){
@@ -57,7 +57,7 @@ sub get_arg{
 	if(not defined $arg||$arg=~/^-{1,2}.+/){die colored "[-] Wrong number of arguments for \"$_\".\nExpected $_[1].\nGot ".($_[0]-1).".\n",'red'}
 	if($_[2]){
 		if(not $arg~~$_[3]){
-			if(ref($_[3])eq ARRAY){
+			if(ref $_[3] eq ARRAY){
 				die colored "[-] Invalid $_[2] \"$arg\".\nSupported $_[2]s: ".join(' ',@{$_[3]})."\n",'red'
 			}else{
 				die colored "[-] Invalid $_[2] \"$arg\".\n\u$_[2] has to be $_[4].\n",'red'
