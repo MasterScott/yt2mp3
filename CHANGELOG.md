@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.1.7] - 2019-07-25
+
+### Added
+
+##### [README.md](README.md)
+
+- `Features` section.
+
 ## [2.1.6] - 2019-07-23
 
 ### Added

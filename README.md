@@ -25,6 +25,7 @@
 ## Content
 
 - [Content](#content)
+- [Features](#features)
 - [Installation](#installation)
   - [Windows](#windows)
   - [Unix](#unix)
@@ -38,6 +39,13 @@
 - [Authors](#authors)
 - [Contact](#contact)
 - [License](#license)
+
+## Features
+
+* Support for songs lists.
+* Support for multiple audio formats.
+* Configurable audio quality.
+* Customizable output file template.
 
 ## Installation
 

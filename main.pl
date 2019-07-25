@@ -5,7 +5,7 @@ use warnings;
 use experimental 'smartmatch';
 use Term::ANSIColor qw(color colored);
 
-my $VERSION='2.1.6';
+my $VERSION='2.1.7';
 
 if($^Oeq'MSWin32'){
 	my $youtube_dl_not_installed=system('where youtube-dl >NUL 2>NUL');
