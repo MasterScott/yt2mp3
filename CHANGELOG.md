@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.1.9] - 2019-07-25
+
+### Fixed
+
+##### [main.pl](main.pl)
+
+- Not closed file with songs.
+- Not working colors on Windows.
+
 ## [2.1.8] - 2019-07-25
 
 ### Fixed

@@ -4,16 +4,18 @@ no strict qw(subs refs);
 use warnings;
 use experimental 'smartmatch';
 use Term::ANSIColor qw(color colored);
+if($^Oeq'MSWin32'){
+	require Win32::Console::ANSI;
+	Win32::Console::ANSI->import();
+}
 
-my $VERSION='2.1.8';
+my $VERSION='2.1.9';
 
 if($^Oeq'MSWin32'){
 	my $youtube_dl_not_installed=system('where youtube-dl >NUL 2>NUL');
 	my $ffmpeg_not_installed=system('where ffmpeg >NUL 2>NUL');
 	my $anything_not_installed=$youtube_dl_not_installed||$ffmpeg_not_installed;
 	if($anything_not_installed){
-		require Win32::Console::ANSI;
-		Win32::Console::ANSI->import();
 		print colored "[-] YT2MP3 is not installed.\n",'red';
 		print colored "[+] Starting the installation.\n",'green';
 		print colored "[+] Downloading wget.exe\n",'green';
@@ -45,7 +47,7 @@ if($^Oeq'MSWin32'){
 	}
 }
 
-my $songs_file=STDIN;
+my $songs_file_path;
 my $audio_format='mp3';
 my $audio_quality='0';
 my $output_template='%(title)s.%(ext)s';
@@ -62,10 +64,7 @@ do{
 			print("YT2MP3 v$VERSION\n");
 			exit;
 		}
-		when(['-s','--songs']){
-			my $songs_list=get_arg(1,1);
-			open $songs_file,'<',$songs_list or die "[-] Can't open file \"$songs_list\": $!";
-		}
+		when(['-s','--songs']){$songs_file_path=get_arg(1,1)}
 		when(['-f','--format']){
 			$audio_format=get_arg(1,1);
 			if(not $audio_format~~['best','aac','flac','mp3','m4a','opus','vorbis','wav']){
@@ -96,6 +95,10 @@ do{
 }while(@ARGV);
 
 my @songs;
+if($songs_file_path){
+	open $songs_file,'<',$songs_file_path or die colored "[-] Can't open \"$songs_file_path\": $!.\n",'red';
+}else{$songs_file=STDIN}
 while(<$songs_file>){/v=[\w_-]+/ ?push @songs,"https://www.youtube.com/watch?$&":last};
+close $songs_file or die colored "[-] Can't close \"$songs_file_path\": $!.\n",'red';
 system(($^O=~/^ms/i ?'./':'').'youtube-dl','--geo-bypass','-x','--audio-format',$audio_format,'--audio-quality',$audio_quality,'-o',$output_template,@songs) and exit $?>>8;
 rename $_,$_=~s/^\s+|(\([^\)]*\))|[^ -~]+|\s+$//gr foreach(glob '*.'.$audio_format);
