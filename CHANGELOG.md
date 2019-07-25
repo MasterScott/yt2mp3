@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.1.11] - 2019-07-25
+
+### Added
+
+##### [main.pl](main.pl)
+
+- Better argument parsing.
+
+### Fixed
+
+##### [main.pl](main.pl)
+
+- Argument parser bug.
+
 ## [2.1.10] - 2019-07-25
 
 ### Added

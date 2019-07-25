@@ -9,7 +9,7 @@ if($^Oeq'MSWin32'){
 	Win32::Console::ANSI->import();
 }
 
-my $VERSION='2.1.10';
+my $VERSION='2.1.11';
 
 if($^Oeq'MSWin32'){
 	my $youtube_dl_not_installed=system('where youtube-dl >NUL 2>NUL');
@@ -54,7 +54,16 @@ my $output_template='%(title)s.%(ext)s';
 
 sub get_arg{
 	my $arg=shift @ARGV;
-	if(!$arg||$arg=~/^-{1,2}.+/){die colored "[-] Wrong number of arguments for \"$_\".\nExpected $_[1].\nGot ".($_[0]-1).".\n",'red'}
+	if(not defined $arg||$arg=~/^-{1,2}.+/){die colored "[-] Wrong number of arguments for \"$_\".\nExpected $_[1].\nGot ".($_[0]-1).".\n",'red'}
+	if($_[2]){
+		if(not $arg~~$_[3]){
+			if(ref($_[3])eq ARRAY){
+				die colored "[-] Invalid $_[2] \"$arg\".\nSupported $_[2]s: ".join(' ',@{$_[3]})."\n",'red'
+			}else{
+				die colored "[-] Invalid $_[2] \"$arg\".\n\u$_[2] has to be $_[4].\n",'red'
+			}
+		}
+	}
 	return $arg;
 }
 do{
@@ -66,16 +75,10 @@ do{
 		}
 		when(['-s','--songs']){$songs_file_path=get_arg(1,1)}
 		when(['-f','--format']){
-			$audio_format=get_arg(1,1);
-			if(not $audio_format~~['best','aac','flac','mp3','m4a','opus','vorbis','wav']){
-				die colored "[-] Invalid audio format \"$audio_format\".\nSupported audio formats: best aac flac mp3 m4a opus vorbis wav.\n",'red'
-			}
+			$audio_format=get_arg(1,1,'audio format',['best','aac','flac','mp3','m4a','opus','vorbis','wav'])
 		}
 		when(['-q','--quality']){
-			$audio_quality=get_arg(1,1);
-			if($audio_quality!~/^\d$/){
-				die colored "[-] Invalid audio quality \"$audio_quality\".\nAudio quality has to be number between 0, for best quality, and 9, for worst.\n",'red'
-			}
+			$audio_quality=get_arg(1,1,'audio quality',qr/^\d$/,'number between 0, for best quality, and 9, for worst');
 		}
 		when(['-o','--output']){$output_template=get_arg(1,1)}
 		default{
