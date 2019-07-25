@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.1.8] - 2019-07-25
+
+### Fixed
+
+##### [main.pl](main.pl)
+
+- Error handling in argument parser.
+
 ## [2.1.7] - 2019-07-25
 
 ### Added

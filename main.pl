@@ -5,7 +5,7 @@ use warnings;
 use experimental 'smartmatch';
 use Term::ANSIColor qw(color colored);
 
-my $VERSION='2.1.7';
+my $VERSION='2.1.8';
 
 if($^Oeq'MSWin32'){
 	my $youtube_dl_not_installed=system('where youtube-dl >NUL 2>NUL');
@@ -52,7 +52,7 @@ my $output_template='%(title)s.%(ext)s';
 
 sub get_arg{
 	my $arg=shift @ARGV;
-	if(!$arg||$arg=~/^-{1,2}.+/){die "Wrong number of arguments for \"$_\".\nExpected $_[1].\nGot ".($_[0]-1).".\n"}
+	if(!$arg||$arg=~/^-{1,2}.+/){die colored "[-] Wrong number of arguments for \"$_\".\nExpected $_[1].\nGot ".($_[0]-1).".\n",'red'}
 	return $arg;
 }
 do{
@@ -64,7 +64,7 @@ do{
 		}
 		when(['-s','--songs']){
 			my $songs_list=get_arg(1,1);
-			open $songs_file,'<',$songs_list or die "Can't open file \"$songs_list\": $!";
+			open $songs_file,'<',$songs_list or die "[-] Can't open file \"$songs_list\": $!";
 		}
 		when(['-f','--format']){
 			$audio_format=get_arg(1,1);
@@ -88,7 +88,7 @@ do{
 			print "  -f, --format {best aac flac mp3 m4a opus vorbis wav}\n            set custom file format\n";
 			print "  -q, --quality {0-9}\n            set custom audio quality\n";
 			print "  -o, --output TEMPLATE\n            set custom output template\n";
-			if(not $_~~['-h','--help']){die colored "Invalid option \"$_\".\n",'red'}
+			if(not $_~~['-h','--help']){die colored "[-] Invalid option \"$_\".\n",'red'}
 			print color 'reset';
 			exit
 		}
