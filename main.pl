@@ -9,7 +9,7 @@ if($^Oeq'MSWin32'){
 	Win32::Console::ANSI->import();
 }
 
-my $VERSION='2.1.9';
+my $VERSION='2.1.10';
 
 if($^Oeq'MSWin32'){
 	my $youtube_dl_not_installed=system('where youtube-dl >NUL 2>NUL');
@@ -68,13 +68,13 @@ do{
 		when(['-f','--format']){
 			$audio_format=get_arg(1,1);
 			if(not $audio_format~~['best','aac','flac','mp3','m4a','opus','vorbis','wav']){
-				die "Invalid audio format \"$audio_format\".\nSupported audio formats: best aac flac mp3 m4a opus vorbis wav.\n"
+				die colored "[-] Invalid audio format \"$audio_format\".\nSupported audio formats: best aac flac mp3 m4a opus vorbis wav.\n",'red'
 			}
 		}
 		when(['-q','--quality']){
 			$audio_quality=get_arg(1,1);
 			if($audio_quality!~/^\d$/){
-				die "Invalid audio quality \"$audio_quality\".\nAudio quality has to be number between 0, for best quality, and 9, for worst.\n"
+				die colored "[-] Invalid audio quality \"$audio_quality\".\nAudio quality has to be number between 0, for best quality, and 9, for worst.\n",'red'
 			}
 		}
 		when(['-o','--output']){$output_template=get_arg(1,1)}
@@ -95,6 +95,7 @@ do{
 }while(@ARGV);
 
 my @songs;
+my $songs_file;
 if($songs_file_path){
 	open $songs_file,'<',$songs_file_path or die colored "[-] Can't open \"$songs_file_path\": $!.\n",'red';
 }else{$songs_file=STDIN}

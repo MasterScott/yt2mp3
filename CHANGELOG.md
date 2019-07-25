@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.1.10] - 2019-07-25
+
+### Added
+
+##### [main.pl](main.pl)
+
+- Colors to error handling.
+
 ## [2.1.9] - 2019-07-25
 
 ### Fixed
