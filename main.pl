@@ -9,7 +9,7 @@ if($^O eq 'MSWin32'){
 	Win32::Console::ANSI->import();
 }
 
-my $VERSION='2.1.12';
+my $VERSION='2.1.13';
 
 if($^O eq 'MSWin32'){
 	my $youtube_dl_not_installed=system('where youtube-dl >NUL 2>NUL');
@@ -84,12 +84,12 @@ do{
 		default{
 			print color 'blue';
 			print "usage: perl main.pl [-h] [-v] [-s FILE] [-f {best aac flac mp3 m4a opus vorbis wav}] [-q {0-9}] [-o TEMPLATE]\n";
-			print "  -h, --help            show this help message and exit\n";
+			print "  -h, --help            show help message and exit\n";
 			print "  -v, --version            show version and exit\n";
 			print "  -s, --songs FILE\n            set path to file with songs\n";
-			print "  -f, --format {best aac flac mp3 m4a opus vorbis wav}\n            set custom file format\n";
-			print "  -q, --quality {0-9}\n            set custom audio quality\n";
-			print "  -o, --output TEMPLATE\n            set custom output template\n";
+			print "  -f, --format {best aac flac mp3 m4a opus vorbis wav}\n            set file format\n";
+			print "  -q, --quality {0-9}\n            set audio quality\n";
+			print "  -o, --output TEMPLATE\n            set output template\n";
 			if(not $_~~['-h','--help']){die colored "[-] Invalid option \"$_\".\n",'red'}
 			print color 'reset';
 			exit
