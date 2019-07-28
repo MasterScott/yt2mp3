@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.1.14] - 2019-07-28
+
+### Added
+
+##### [README.md](README.md)
+
+- Reddit profile to `Contact` section.
+
 ## [2.1.13] - 2019-07-28
 
 ### Changed
