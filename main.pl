@@ -9,7 +9,7 @@ if($^O eq 'MSWin32'){
 	Win32::Console::ANSI->import();
 }
 
-my $VERSION='2.1.14';
+my $VERSION='2.1.15';
 
 if($^O eq 'MSWin32'){
 	my $youtube_dl_not_installed=system('where youtube-dl >NUL 2>NUL');

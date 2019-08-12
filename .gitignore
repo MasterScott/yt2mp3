@@ -1,8 +1,8 @@
-*
-!.gitignore
-!CHANGELOG.md
-!LICENSE
-!main.bat
-!main.pl
-!README.md
-!VERSION
+*.txt
+*.aac
+*.flac
+*.mp3
+*.m4a
+*.opus
+*.vorbis
+*.wav
